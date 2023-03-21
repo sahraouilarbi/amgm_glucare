@@ -184,7 +184,7 @@ class _MainScreenState extends State<MainScreen> {
                 textAlign: TextAlign.center,
               ),
               const Text(AppStrings.calculateRiskOfPersone),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               const Text(
                 AppStrings.important,
                 style: TextStyle(
@@ -192,7 +192,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const Text(AppStrings.information),
-              //const SizedBox(height: 16.0),
+              //const SizedBox(height: 24.0),
               const Divider(height: 32.0),
 
 
@@ -218,7 +218,7 @@ class _MainScreenState extends State<MainScreen> {
                   });
                 },
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
               //2. Durée du Diabète
               myDropdownButtonFormField(
                   key: _durationOfDiabetesformKey,
@@ -240,7 +240,7 @@ class _MainScreenState extends State<MainScreen> {
                       _durationOfDiabetesRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // // 3. Hypoglycémie
               myDropdownButtonFormField(
@@ -263,7 +263,7 @@ class _MainScreenState extends State<MainScreen> {
                       _hypoglycaemiaRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 4. Contrôle glycémique
               myDropdownButtonFormField(
@@ -286,7 +286,7 @@ class _MainScreenState extends State<MainScreen> {
                       _glycemicControlRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 5. Traitement du diabète
               myDropdownButtonFormField(
@@ -309,7 +309,7 @@ class _MainScreenState extends State<MainScreen> {
                       _typeOfTreatmentRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 6. ASG
               myDropdownButtonFormField(
@@ -331,7 +331,7 @@ class _MainScreenState extends State<MainScreen> {
                       _smbgRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 7. Complications sévères
               myDropdownButtonFormField(
@@ -354,7 +354,9 @@ class _MainScreenState extends State<MainScreen> {
                       _acuteComplicationsRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 4.0),
+              const Text(AppStrings.shhDescription),
+              const SizedBox(height: 24.0),
 
               // 8. Complications macrovasculaires/comorbidités
               myDropdownButtonFormField(
@@ -377,7 +379,7 @@ class _MainScreenState extends State<MainScreen> {
                       _mvdComplicationsRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 9. Complications rénales/comorbidités
               myDropdownButtonFormField(
@@ -400,7 +402,9 @@ class _MainScreenState extends State<MainScreen> {
                       _renalComplicationsRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 4.0),
+              const Text(AppStrings.eGFRDescription),
+              const SizedBox(height: 24.0),
 
               // 10. Grossesse
               myDropdownButtonFormField(
@@ -423,7 +427,7 @@ class _MainScreenState extends State<MainScreen> {
                       _pregnancyRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 11. Fragilité et fonction cognitive
               myDropdownButtonFormField(
@@ -448,7 +452,7 @@ class _MainScreenState extends State<MainScreen> {
                           double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 12. Activité physique
               myDropdownButtonFormField(
@@ -471,7 +475,7 @@ class _MainScreenState extends State<MainScreen> {
                       _physicalLabourRiskScore = double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 13. Expérience du Ramadan précédent
               myDropdownButtonFormField(
@@ -496,7 +500,7 @@ class _MainScreenState extends State<MainScreen> {
                           double.parse(value!);
                     });
                   }),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
 
               // 14. Nombre d'heures de jeûne (selon la localisation géographique)
               myDropdownButtonFormField(
@@ -522,13 +526,13 @@ class _MainScreenState extends State<MainScreen> {
               const Divider(height: 32.0),
 
               const Text(AppStrings.resetText),
-              //const SizedBox(height: 16.0),
-              const SizedBox(height: 16.0),
+              //const SizedBox(height: 24.0),
+              const SizedBox(height: 24.0),
               MyButton(
                 onPressed: reset,
                 text: AppStrings.reset,
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
             ],
           ),
         ),

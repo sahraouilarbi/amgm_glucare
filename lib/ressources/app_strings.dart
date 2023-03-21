@@ -24,8 +24,9 @@ Toutes les recommandations présentées dans cette application sont tirées des 
   static const String developpedForName = 'Association des Médecins Généraliste de la Wilaya de Mostaganem';
   static const String developpedForSite = 'https://www.mgmostaganem.net';
   static const String developpedForEmail = 'contact@mgmostaganem.net';
-    static const String diabetesType = 'Type de diabète';
+  static const String diabetesType = 'Type de diabète';
   static const String durationOfDiabetes = 'Durée du diabète';
+  static const String eGFRDescription = "eGFR: Débit de filtration glomérulaire estimé";
   static const String fastingHours = 'Nombre d\'heures de jeûne (selon la localisation géographique)';
   static const String frailtyAndCognitiveFunction = 'Fragilité et fonction cognitive';
   static const String glycemicControl = 'Contrôle glycémique';
@@ -40,7 +41,8 @@ Toutes les recommandations présentées dans cette application sont tirées des 
   static const String reset = 'Reset';
   static const String resetText = 'Pour remettre le calculateur de risque à 0, cliquer sur le boutton Reset';
   static const String riskCalculator = 'CALCULATEUR DE RISQUE';
-  static const String smbg = 'ASG';
+  static const String smbg = 'Autosurveillance glycémique';
+  static const String shhDescription = 'SHH: Syndrome d\'hyperosmolarité hyperglycémique';
   static const String start="Commencer";
   static const String typeOfTreatment = 'Traitement du diabète';
   static const String version = 'Version';
