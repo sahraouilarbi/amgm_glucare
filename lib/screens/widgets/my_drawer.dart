@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '/ressources/ressources.dart';
+import '/screens/screens.dart';
+
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
@@ -9,31 +12,45 @@ class MyDrawer extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            SizedBox(height: 50.0),
-            Text(
-              'A Propos',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
+          children: [
+            DrawerHeader(
+              child: Image.asset(
+                AppAssets.appLogo,
+                width: 96.0,
               ),
             ),
-            Text('Développer par : Sahraoui Larbi'),
-            Text(
-                'Pour le compte de:\nl\'Association des Médecins Généraliste de la Wilaya de Mostaganem'),
-            Divider(),
-            Text(
-                'Toutes les recommandations présentées dans cette application sont tirées des lignes directrices de l\'IDF-DAR 2021'),
-            Spacer(),
-            Divider(),
-
-            Text(
-              'mgmostaganem.net',
+            ListTile(
+              title: const Text(
+                AppStrings.description,
+              ),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  DescriptionScreen.routeName,
+                );
+              },
+            ),
+            ListTile(
+              title: const Text(
+                AppStrings.about,
+              ),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  AProposScreen.routeName,
+                );
+              },
+            ),
+            const Spacer(),
+            const Divider(),
+            const Text(
+              AppStrings.developpedForEmail,
               textAlign: TextAlign.center,
             ),
-            Text(
-              '(c) AMGM 2023 - Version 1.0.0+1',
+            const Text(
+              '(c) ${AppStrings.applicationName} 2023 - ${AppStrings.version} ${AppStrings.applicationVersion}',
               textAlign: TextAlign.center,
             ),
           ],

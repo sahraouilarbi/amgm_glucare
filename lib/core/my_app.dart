@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/config/app_route.dart';
 import '/screens/screens.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: OnboardingScreen(),
+      onGenerateRoute: AppRouter.onGenerateRoute,
+      initialRoute: OnboardingScreen.routeName,
     );
   }
 }

@@ -6,6 +6,14 @@ import '/screens/widgets/my_button.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  static const String routeName = "/mainScreen";
+
+  static Route route() {
+    return MaterialPageRoute(
+        settings: const RouteSettings(name: routeName),
+        builder: (_) => const MainScreen());
+  }
+
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -161,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('AMGM Glucare : $_riskText'),
+        title: Text('$_riskText : $_riskScore'),
         backgroundColor: _riskColor,
       ),
       drawer: const MyDrawer(),
@@ -170,10 +178,23 @@ class _MainScreenState extends State<MainScreen> {
         child: Form(
           child: ListView(
             children: [
-              Text(AppStrings.riskCalculator,
-                  style: Theme.of(context).textTheme.headlineLarge),
+              Text(
+                AppStrings.riskCalculator,
+                style: Theme.of(context).textTheme.headlineLarge,
+                textAlign: TextAlign.center,
+              ),
               const Text(AppStrings.calculateRiskOfPersone),
               const SizedBox(height: 16.0),
+              const Text(
+                AppStrings.important,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Text(AppStrings.information),
+              //const SizedBox(height: 16.0),
+              const Divider(height: 32.0),
+
 
               // 1. Diabète type
               myDropdownButtonFormField(
@@ -498,11 +519,16 @@ class _MainScreenState extends State<MainScreen> {
                       _fastingHoursRiskScore = double.parse(value!);
                     });
                   }),
+              const Divider(height: 32.0),
+
+              const Text(AppStrings.resetText),
+              //const SizedBox(height: 16.0),
               const SizedBox(height: 16.0),
               MyButton(
                 onPressed: reset,
-                text: 'Reset',
+                text: AppStrings.reset,
               ),
+              const SizedBox(height: 16.0),
             ],
           ),
         ),
