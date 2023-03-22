@@ -50,7 +50,11 @@ class MyDrawer extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const Text(
-              '(c) ${AppStrings.applicationName} 2023 - ${AppStrings.version} ${AppStrings.applicationVersion}',
+              '(c) ${AppStrings.applicationName} 2023',
+              textAlign: TextAlign.center,
+            ),
+            const Text(
+              '${AppStrings.version} : ${AppStrings.applicationVersion}',
               textAlign: TextAlign.center,
             ),
           ],
