@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 import '/ressources/ressources.dart';
 import '/screens/screens.dart';
@@ -20,8 +21,8 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: const Text(
-                AppStrings.description,
+              title: Text(
+                AppLocalizations.of(context)!.description,
               ),
               trailing: const Icon(Icons.chevron_right_rounded),
               onTap: () {
@@ -32,8 +33,8 @@ class MyDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              title: const Text(
-                AppStrings.about,
+              title: Text(
+                AppLocalizations.of(context)!.about,
               ),
               trailing: const Icon(Icons.chevron_right_rounded),
               onTap: () {
@@ -43,18 +44,30 @@ class MyDrawer extends StatelessWidget {
                 );
               },
             ),
+            ListTile(
+              title: Text(
+                AppLocalizations.of(context)!.settings,
+              ),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  SettingsScreen.routeName,
+                );
+              },
+            ),
             const Spacer(),
             const Divider(),
-            const Text(
-              AppStrings.developpedForEmail,
+            Text(
+              AppLocalizations.of(context)!.developpedForEmail,
               textAlign: TextAlign.center,
             ),
-            const Text(
-              '(c) ${AppStrings.applicationName} 2023',
+            Text(
+              '(c) ${AppLocalizations.of(context)!.applicationName} 2023',
               textAlign: TextAlign.center,
             ),
-            const Text(
-              '${AppStrings.version} : ${AppStrings.applicationVersion}',
+            Text(
+              '${AppLocalizations.of(context)!.version} : ${AppLocalizations.of(context)!.versionNumber}',
               textAlign: TextAlign.center,
             ),
           ],

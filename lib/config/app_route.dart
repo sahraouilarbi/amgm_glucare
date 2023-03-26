@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
+
 import '/screens/screens.dart';
-import '/ressources/ressources.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -13,6 +14,8 @@ class AppRouter {
         return AProposScreen.route();
       case DescriptionScreen.routeName:
         return DescriptionScreen.route();
+      case SettingsScreen.routeName:
+        return SettingsScreen.route();
       default:
         return _errorRoute();
     }
@@ -20,13 +23,15 @@ class AppRouter {
 
   static Route _errorRoute() {
     return MaterialPageRoute(
-      builder: (_) => SafeArea(
+      builder: (context) => SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('${AppStrings.applicationName} - ${AppStrings.error404}'),
+            title: Text(
+                '${AppLocalizations.of(context)!.applicationName} - ${AppLocalizations.of(context)!.error404}'),
           ),
-          body: const Center(
-            child: Text('${AppStrings.error404} : ${AppStrings.error404Description}'),
+          body: Center(
+            child: Text(
+                '${AppLocalizations.of(context)!.error404} : ${AppLocalizations.of(context)!.error404Description}'),
           ),
         ),
       ),

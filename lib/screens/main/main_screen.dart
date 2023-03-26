@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/ressources/ressources.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '/screens/widgets/my_drawer.dart';
 import '/screens/widgets/my_button.dart';
 
@@ -162,10 +162,10 @@ class _MainScreenState extends State<MainScreen> {
             ? Colors.orange
             : Colors.red;
     _riskText = (_riskScore! <= 3)
-        ? 'Risque faible'
+        ? AppLocalizations.of(context)!.riskLow
         : (_riskScore! >= 3.5 && _riskScore! <= 6)
-            ? 'Risque modéré'
-            : 'Risque élevé';
+            ? AppLocalizations.of(context)!.riskModerate
+            : AppLocalizations.of(context)!.riskHigh;
 
     return Scaffold(
       appBar: AppBar(
@@ -179,32 +179,39 @@ class _MainScreenState extends State<MainScreen> {
           child: ListView(
             children: [
               Text(
-                AppStrings.riskCalculator,
+                AppLocalizations.of(context)!.riskCalculator,
                 style: Theme.of(context).textTheme.headlineLarge,
                 textAlign: TextAlign.center,
               ),
-              const Text(AppStrings.calculateRiskOfPersone),
+              Text(AppLocalizations.of(context)!.calculateRiskOfPersone),
               const SizedBox(height: 24.0),
-              const Text(
-                AppStrings.important,
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context)!.important,
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const Text(AppStrings.information),
-              //const SizedBox(height: 24.0),
+              Text(AppLocalizations.of(context)!.information),
               const Divider(height: 32.0),
-
 
               // 1. Diabète type
               myDropdownButtonFormField(
                 key: _diabetesTypeformKey,
-                label: '1. ${AppStrings.diabetesType}',
-                value: diabetesTypeValues.entries.last.value,
-                items: diabetesTypeValues.entries
-                    .map((e) =>
-                        DropdownMenuItem(value: e.value, child: Text(e.key)))
-                    .toList(),
+                label:
+                    '1. ${AppLocalizations.of(context)!.iDFDAR_01_diabetesType}',
+                value: '0.0',
+                items: <DropdownMenuItem<String>>[
+                  DropdownMenuItem<String>(
+                    value: '1.0',
+                    child: Text(AppLocalizations.of(context)!
+                        .iDFDAR_01_diabetesType_01_Type1),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: '0.0',
+                    child: Text(AppLocalizations.of(context)!
+                        .iDFDAR_01_diabetesType_00_Type2),
+                  ),
+                ],
                 onChanged: (value) {
                   setState(() {
                     _diabetesTypeRiskScore = double.parse(value!);
@@ -219,15 +226,25 @@ class _MainScreenState extends State<MainScreen> {
                 },
               ),
               const SizedBox(height: 24.0),
+
               //2. Durée du Diabète
               myDropdownButtonFormField(
                   key: _durationOfDiabetesformKey,
-                  label: '2. ${AppStrings.durationOfDiabetes}',
-                  value: durationOfDiabetesValues.entries.last.value,
-                  items: durationOfDiabetesValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '2. ${AppLocalizations.of(context)!.iDFDAR_02_durationOfDiabetes}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_02_durationOfDiabetes_01_GreaterOrEgal10),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_02_durationOfDiabetes_00_LessThan10),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _durationOfDiabetesRiskScore = double.parse(value!);
@@ -245,12 +262,36 @@ class _MainScreenState extends State<MainScreen> {
               // // 3. Hypoglycémie
               myDropdownButtonFormField(
                   key: _hypoglycaemiaFormKey,
-                  label: '3. ${AppStrings.hypoglycaemia}',
-                  value: hypoglycaemiaValues.entries.last.value,
-                  items: hypoglycaemiaValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '3. ${AppLocalizations.of(context)!.iDFDAR_03_hypoglycaemia}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '6.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_03_hypoglycaemia_65_Unawareness),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '5.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_03_hypoglycaemia_55_RecentSevere),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '3.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_03_hypoglycaemia_35_MultipleWeekly),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_03_hypoglycaemia_10_LessThan1perWeek),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_03_hypoglycaemia_00_No),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _hypoglycaemiaRiskScore = double.parse(value!);
@@ -268,12 +309,26 @@ class _MainScreenState extends State<MainScreen> {
               // 4. Contrôle glycémique
               myDropdownButtonFormField(
                   key: _glycemicControlFormKey,
-                  label: '4. ${AppStrings.glycemicControl}',
-                  value: glycemicControlValues.entries.last.value,
-                  items: glycemicControlValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '4. ${AppLocalizations.of(context)!.iDFDAR_04_glycemicControl}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_04_glycemicControl_20_HBA1CGreaterThan9),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_04_glycemicControl_10_HBA1CBetween7_5And9),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_04_glycemicControl_00_HBA1CLessThan7_5),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _glycemicControlRiskScore = double.parse(value!);
@@ -291,12 +346,46 @@ class _MainScreenState extends State<MainScreen> {
               // 5. Traitement du diabète
               myDropdownButtonFormField(
                   key: _typeOfTreatmentFormKey,
-                  label: '5. ${AppStrings.typeOfTreatment}',
-                  value: typeOfTreatmentValues.entries.last.value,
-                  items: typeOfTreatmentValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '5. ${AppLocalizations.of(context)!.iDFDAR_05_typeOfTreatment}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '3.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_30_MultipleDailyMixedInsulinInjections),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '2.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_25_BasalBolusOrInsulinPump),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_20_OneDailyMixedInsulin),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_15_BasalInsulin),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_10_Glibenclamide),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_05_GliclazideOrGlimeprideOrRepeglanide),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_05_typeOfTreatment_00_OtherTherapy),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _typeOfTreatmentRiskScore = double.parse(value!);
@@ -314,12 +403,25 @@ class _MainScreenState extends State<MainScreen> {
               // 6. ASG
               myDropdownButtonFormField(
                   key: _smbgFormKey,
-                  label: '6. ${AppStrings.smbg}',
-                  value: smbgValues.entries.last.value,
-                  items: smbgValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label: '6. ${AppLocalizations.of(context)!.iDFDAR_06_smbg}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_06_smbg_20_IndicatedButNotConducted),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_06_smbg_10_IndicatedButConducted),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_06_smbg_00_ConductedAsIndicated),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _smbgRiskScore = double.parse(value!);
@@ -336,12 +438,31 @@ class _MainScreenState extends State<MainScreen> {
               // 7. Complications sévères
               myDropdownButtonFormField(
                   key: _acuteComplicationsFormKey,
-                  label: '7. ${AppStrings.acuteComplications}',
-                  value: acuteComplicationsValues.entries.last.value,
-                  items: acuteComplicationsValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '7. ${AppLocalizations.of(context)!.iDFDAR_07_acuteComplications}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '3.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_07_acuteComplications_30_DkaHoncInTheLast3Months),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_07_acuteComplications_20_DkaHoncInTheLast6Months),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_07_acuteComplications_10_DkaHoncInTheLast12Months),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_07_acuteComplications_00_NoDkaHonc),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _acuteComplicationsRiskScore = double.parse(value!);
@@ -355,18 +476,32 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   }),
               const SizedBox(height: 4.0),
-              const Text(AppStrings.shhDescription),
+              Text(AppLocalizations.of(context)!.iDFDARshhDescription),
               const SizedBox(height: 24.0),
 
               // 8. Complications macrovasculaires/comorbidités
               myDropdownButtonFormField(
                   key: _mvdComplicationsFormKey,
-                  label: '8. ${AppStrings.mvdComplications}',
-                  value: mvdComplicationsValues.entries.last.value,
-                  items: mvdComplicationsValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '8. ${AppLocalizations.of(context)!.iDFDAR_08_mvdComplications}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '6.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_08_mvdComplications_65_UnstableMVD),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_08_mvdComplications_20_StableMVD),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_08_mvdComplications_00_NoMVD),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _mvdComplicationsRiskScore = double.parse(value!);
@@ -384,12 +519,39 @@ class _MainScreenState extends State<MainScreen> {
               // 9. Complications rénales/comorbidités
               myDropdownButtonFormField(
                   key: _renalComplicationsFormKey,
-                  label: '9. ${AppStrings.renalComplications}',
-                  value: renalComplicationsValues.entries.last.value,
-                  items: renalComplicationsValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '9. ${AppLocalizations.of(context)!.iDFDAR_09_renalComplications}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '6.5',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_09_renalComplications_65_eGFRlessThan30,
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '4.0',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_09_renalComplications_40_eGFRbetween30and45,
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '2.0',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_09_renalComplications_20_eGFRbetween45and60,
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_09_renalComplications_00_eGFRmoreThan60,
+                      ),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _renalComplicationsRiskScore = double.parse(value!);
@@ -403,18 +565,38 @@ class _MainScreenState extends State<MainScreen> {
                     });
                   }),
               const SizedBox(height: 4.0),
-              const Text(AppStrings.eGFRDescription),
+              Text(AppLocalizations.of(context)!.iDFDAReGFRDescription),
               const SizedBox(height: 24.0),
 
               // 10. Grossesse
               myDropdownButtonFormField(
                   key: _pregnancyFormKey,
-                  label: '10. ${AppStrings.pregnancy}',
-                  value: pregnancyValues.entries.last.value,
-                  items: pregnancyValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '10. ${AppLocalizations.of(context)!.iDFDAR_10_pregnancy}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '6.5',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_10_pregnancy_65_PregnantNotWithinTargets,
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '3.5',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_10_pregnancy_35_PregnantWithinTargets,
+                      ),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(
+                        AppLocalizations.of(context)!
+                            .iDFDAR_10_pregnancy_00_NotPregnant,
+                      ),
+                    )
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _pregnancyRiskScore = double.parse(value!);
@@ -432,12 +614,26 @@ class _MainScreenState extends State<MainScreen> {
               // 11. Fragilité et fonction cognitive
               myDropdownButtonFormField(
                   key: _frailtyAndCognitiveFunctionFormKey,
-                  label: '11. ${AppStrings.frailtyAndCognitiveFunction}',
-                  value: frailtyAndCognitiveFunctionValues.entries.last.value,
-                  items: frailtyAndCognitiveFunctionValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '11. ${AppLocalizations.of(context)!.iDFDAR_11_frailtyAndCognitiveFunction}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem<String>(
+                      value: '6.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_11_frailtyAndCognitiveFunction_65_ImpairedCognitiveFunctionOrFrail),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '3.5',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_11_frailtyAndCognitiveFunction_35_moreThan70YearsOldWithNoHomeSupport),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_11_frailtyAndCognitiveFunction_00_NoFrailtyOrLossInCognitiveFunction),
+                    )
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _frailtyAndCognitiveFunctionRiskScore =
@@ -457,12 +653,26 @@ class _MainScreenState extends State<MainScreen> {
               // 12. Activité physique
               myDropdownButtonFormField(
                   key: _physicalLabourFormKey,
-                  label: '12. ${AppStrings.physicalLabour}',
-                  value: physicalLabourValues.entries.last.value,
-                  items: physicalLabourValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '12. ${AppLocalizations.of(context)!.iDFDAR_12_physicalLabour}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: '4.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_12_physicalLabour_40_HighlyIntensePhysicalLabour),
+                    ),
+                    DropdownMenuItem(
+                      value: '2.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_12_physicalLabour_20_ModerateIntensePhysicalLabour),
+                    ),
+                    DropdownMenuItem(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_12_physicalLabour_00_NoPhysicalLabour),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _physicalLabourRiskScore = double.parse(value!);
@@ -480,12 +690,21 @@ class _MainScreenState extends State<MainScreen> {
               // 13. Expérience du Ramadan précédent
               myDropdownButtonFormField(
                   key: _previousRamadanExperienceFormKey,
-                  label: '13. ${AppStrings.previousRamadanExperience}',
-                  value: previousRamadanExperienceValues.entries.last.value,
-                  items: previousRamadanExperienceValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '13. ${AppLocalizations.of(context)!.iDFDAR_13_previousRamadanExperience}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_13_previousRamadanExperience_10_OverallNegativeExperience),
+                    ),
+                    DropdownMenuItem(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_13_previousRamadanExperience_00_NoNegativeOrPositiveExperience),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _previousRamadanExperienceRiskScore =
@@ -505,12 +724,21 @@ class _MainScreenState extends State<MainScreen> {
               // 14. Nombre d'heures de jeûne (selon la localisation géographique)
               myDropdownButtonFormField(
                   key: _fastingHoursFormKey,
-                  label: '14. ${AppStrings.fastingHours}',
-                  value: fastingHoursValues.entries.last.value,
-                  items: fastingHoursValues.entries
-                      .map((e) =>
-                          DropdownMenuItem(value: e.value, child: Text(e.key)))
-                      .toList(),
+                  label:
+                      '14. ${AppLocalizations.of(context)!.iDFDAR_14_fastingHours}',
+                  value: '0.0',
+                  items: <DropdownMenuItem<String>>[
+                    DropdownMenuItem(
+                      value: '1.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_14_fastingHours_10_moreOrEgalThan16),
+                    ),
+                    DropdownMenuItem(
+                      value: '0.0',
+                      child: Text(AppLocalizations.of(context)!
+                          .iDFDAR_14_fastingHours_10_lessThan16),
+                    ),
+                  ],
                   onChanged: (value) {
                     setState(() {
                       _fastingHoursRiskScore = double.parse(value!);
@@ -525,12 +753,11 @@ class _MainScreenState extends State<MainScreen> {
                   }),
               const Divider(height: 32.0),
 
-              const Text(AppStrings.resetText),
-              //const SizedBox(height: 24.0),
+              Text(AppLocalizations.of(context)!.resetText),
               const SizedBox(height: 24.0),
               MyButton(
                 onPressed: reset,
-                text: AppStrings.reset,
+                text: AppLocalizations.of(context)!.reset,
               ),
               const SizedBox(height: 24.0),
             ],

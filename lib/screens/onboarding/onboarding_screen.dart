@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-import 'onboarding_screen_viewmodel.dart';
 import '/ressources/ressources.dart';
 import '/screens/main/main_screen.dart';
 import '/screens/widgets/my_button.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  final viewModel = OnboardingScreenViewModel();
-
-  OnboardingScreen({super.key});
+  const OnboardingScreen({super.key});
 
   static const String routeName = "/onboardingScreen";
 
   static Route route() {
     return MaterialPageRoute(
-        settings: const RouteSettings(name: routeName),
-        builder: (_) => OnboardingScreen());
+      settings: const RouteSettings(name: routeName),
+      builder: (_) => const OnboardingScreen(),
+    );
   }
 
   @override
@@ -30,26 +29,31 @@ class OnboardingScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.33,
                   child: Image.asset(
                     AppAssets.appLogo,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Text(
-                  viewModel.onboardingScreenModel.title,
-                  style: const TextStyle(fontSize: 24),
+                  '${AppLocalizations.of(context)!.welcome}\n${AppLocalizations.of(context)!.applicationName}',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 28),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Image.asset(
-                    viewModel.onboardingScreenModel.image,
+                    AppAssets.onboardingImage,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(height: 16.0),
                 Text(
-                  viewModel.onboardingScreenModel.description,
+                  AppLocalizations.of(context)!.descriptionShort,
+                  style: const TextStyle(fontSize: 16),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.multilangueAvailable,
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(height: 16.0),
@@ -57,9 +61,8 @@ class OnboardingScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, MainScreen.routeName);
                   },
-                  text: AppStrings.start,
+                  text: AppLocalizations.of(context)!.start,
                 ),
-                const SizedBox(height: 16.0),
               ],
             ),
           ),

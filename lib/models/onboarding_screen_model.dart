@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart' show immutable;
+
+@immutable
 class OnboardingScreenModel {
   final String title;
   final String description;
   final String image;
 
-  OnboardingScreenModel({
+  const OnboardingScreenModel({
     required this.title,
     required this.description,
     required this.image,
