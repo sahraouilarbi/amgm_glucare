@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
+import '/config/version.dart';
 import '/ressources/ressources.dart';
 import '/screens/screens.dart';
 
@@ -67,7 +68,7 @@ class MyDrawer extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Text(
-              '${AppLocalizations.of(context)!.version} : ${AppLocalizations.of(context)!.versionNumber}',
+              '${AppLocalizations.of(context)!.version} : $versionNumber',
               textAlign: TextAlign.center,
             ),
           ],

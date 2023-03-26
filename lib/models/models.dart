@@ -1,1 +1,1 @@
-export 'onboarding_screen_model.dart';
+export 'languages_model.dart';

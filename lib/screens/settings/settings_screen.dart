@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
-import '../../config/language_constants.dart';
+import '/config/language_constants.dart';
 import '/core/my_app.dart';
-import '/models/languages_model.dart';
+import '/models/models.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
+import '/config/version.dart';
+
 class AProposScreen extends StatelessWidget {
   const AProposScreen({Key? key}) : super(key: key);
 
@@ -76,8 +78,8 @@ class AProposScreen extends StatelessWidget {
                 Text(
                   '${AppLocalizations.of(context)!.version} : ',
                 ),
-                Text(
-                  AppLocalizations.of(context)!.versionNumber,
+                const Text(
+                  versionNumber,
                   textDirection: TextDirection.ltr,
                 ),
               ],
