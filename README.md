@@ -4,6 +4,9 @@ AMGM Glucare est une application qui permet de mesurer le risque de jeûne chez 
 
 ## Changelog
 
+### Version 1.0.2
+- Version (1.0.1) non accepter par le Google Play Store
+
 ### Version 1.0.1
 
 - Ajout des langues Français, Anglais, et Arabe
