@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
-import '/screens/widgets/my_drawer.dart';
-import '/screens/widgets/my_button.dart';
+import '/screens/widgets/widgets.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -195,8 +194,8 @@ class _MainScreenState extends State<MainScreen> {
               const Divider(height: 32.0),
 
               // 1. Diabète type
-              myDropdownButtonFormField(
-                key: _diabetesTypeformKey,
+              MyDropdownButtonFormField(
+                formFieldStateKey: _diabetesTypeformKey,
                 label:
                     '1. ${AppLocalizations.of(context)!.iDFDAR_01_diabetesType}',
                 value: '0.0',
@@ -228,8 +227,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               //2. Durée du Diabète
-              myDropdownButtonFormField(
-                  key: _durationOfDiabetesformKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _durationOfDiabetesformKey,
                   label:
                       '2. ${AppLocalizations.of(context)!.iDFDAR_02_durationOfDiabetes}',
                   value: '0.0',
@@ -260,8 +259,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // // 3. Hypoglycémie
-              myDropdownButtonFormField(
-                  key: _hypoglycaemiaFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _hypoglycaemiaFormKey,
                   label:
                       '3. ${AppLocalizations.of(context)!.iDFDAR_03_hypoglycaemia}',
                   value: '0.0',
@@ -307,8 +306,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 4. Contrôle glycémique
-              myDropdownButtonFormField(
-                  key: _glycemicControlFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _glycemicControlFormKey,
                   label:
                       '4. ${AppLocalizations.of(context)!.iDFDAR_04_glycemicControl}',
                   value: '0.0',
@@ -344,8 +343,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 5. Traitement du diabète
-              myDropdownButtonFormField(
-                  key: _typeOfTreatmentFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _typeOfTreatmentFormKey,
                   label:
                       '5. ${AppLocalizations.of(context)!.iDFDAR_05_typeOfTreatment}',
                   value: '0.0',
@@ -401,8 +400,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 6. ASG
-              myDropdownButtonFormField(
-                  key: _smbgFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _smbgFormKey,
                   label: '6. ${AppLocalizations.of(context)!.iDFDAR_06_smbg}',
                   value: '0.0',
                   items: <DropdownMenuItem<String>>[
@@ -436,8 +435,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 7. Complications sévères
-              myDropdownButtonFormField(
-                  key: _acuteComplicationsFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _acuteComplicationsFormKey,
                   label:
                       '7. ${AppLocalizations.of(context)!.iDFDAR_07_acuteComplications}',
                   value: '0.0',
@@ -480,8 +479,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 8. Complications macrovasculaires/comorbidités
-              myDropdownButtonFormField(
-                  key: _mvdComplicationsFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _mvdComplicationsFormKey,
                   label:
                       '8. ${AppLocalizations.of(context)!.iDFDAR_08_mvdComplications}',
                   value: '0.0',
@@ -517,8 +516,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 9. Complications rénales/comorbidités
-              myDropdownButtonFormField(
-                  key: _renalComplicationsFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _renalComplicationsFormKey,
                   label:
                       '9. ${AppLocalizations.of(context)!.iDFDAR_09_renalComplications}',
                   value: '0.0',
@@ -569,8 +568,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 10. Grossesse
-              myDropdownButtonFormField(
-                  key: _pregnancyFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _pregnancyFormKey,
                   label:
                       '10. ${AppLocalizations.of(context)!.iDFDAR_10_pregnancy}',
                   value: '0.0',
@@ -612,8 +611,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 11. Fragilité et fonction cognitive
-              myDropdownButtonFormField(
-                  key: _frailtyAndCognitiveFunctionFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _frailtyAndCognitiveFunctionFormKey,
                   label:
                       '11. ${AppLocalizations.of(context)!.iDFDAR_11_frailtyAndCognitiveFunction}',
                   value: '0.0',
@@ -651,8 +650,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 12. Activité physique
-              myDropdownButtonFormField(
-                  key: _physicalLabourFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _physicalLabourFormKey,
                   label:
                       '12. ${AppLocalizations.of(context)!.iDFDAR_12_physicalLabour}',
                   value: '0.0',
@@ -688,8 +687,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 13. Expérience du Ramadan précédent
-              myDropdownButtonFormField(
-                  key: _previousRamadanExperienceFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _previousRamadanExperienceFormKey,
                   label:
                       '13. ${AppLocalizations.of(context)!.iDFDAR_13_previousRamadanExperience}',
                   value: '0.0',
@@ -722,8 +721,8 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(height: 24.0),
 
               // 14. Nombre d'heures de jeûne (selon la localisation géographique)
-              myDropdownButtonFormField(
-                  key: _fastingHoursFormKey,
+              MyDropdownButtonFormField(
+                  formFieldStateKey: _fastingHoursFormKey,
                   label:
                       '14. ${AppLocalizations.of(context)!.iDFDAR_14_fastingHours}',
                   value: '0.0',
@@ -764,35 +763,6 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget myDropdownButtonFormField({
-    Key? key,
-    required String label,
-    String? value,
-    required List<DropdownMenuItem<String>>? items,
-    required void Function(String?)? onChanged,
-    void Function(String?)? onSaved,
-  }) {
-    return DropdownButtonFormField<String>(
-      key: key,
-      decoration: InputDecoration(
-        labelText: label,
-        border: const OutlineInputBorder(),
-      ),
-      value: value,
-      items: items,
-      isExpanded: true,
-      onChanged: onChanged,
-      onSaved: onSaved,
-      validator: (String? value) {
-        if (value == '') {
-          return "can't be empty";
-        } else {
-          return null;
-        }
-      },
     );
   }
 }
