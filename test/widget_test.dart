@@ -8,23 +8,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:amgm_glucare/core/my_app.dart';
+import 'package:amgm_glucare/screens/widgets/my_dropdown_button_form_field.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group(
+    'MyDropdownButtonFormField tests',
+    () {
+      testWidgets(
+        'Dropdown menu items should match values',
+        (WidgetTester tester) async {
+          final pregnancyKey = GlobalKey<FormFieldState>();
+          String? dropdownValue = '0.0';
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+          await tester.pumpWidget(
+            MaterialApp(
+              home: Scaffold(
+                body: StatefulBuilder(
+                  builder: (BuildContext context, StateSetter setState) {
+                    return MyDropdownButtonFormField(
+                      formFieldStateKey: pregnancyKey,
+                      label: '10. Pregnancy',
+                      value: dropdownValue,
+                      items: const <DropdownMenuItem<String>>[
+                        DropdownMenuItem<String>(
+                          value: '6.5',
+                          child: Text('Pregnant not within targets'),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: '3.5',
+                          child: Text('Pregnant within targets'),
+                        ),
+                        DropdownMenuItem<String>(
+                          value: '0.0',
+                          child: Text('Not pregnant'),
+                        ),
+                      ],
+                      onChanged: (value) {
+                        setState(() {});
+                        dropdownValue = value;
+                      },
+                      onSaved: (value) {},
+                    );
+                  },
+                ),
+              ),
+            ),
+          );
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+          expect(dropdownValue, '0.0');
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+          await tester.tap(find.text('Not pregnant'));
+          await tester.pumpAndSettle();
+
+          expect(dropdownValue, '0.0');
+
+          // await tester.tap(find.text('Pregnant within targets'));
+          // await tester.pumpAndSettle();
+
+          // expect(dropdownValue, '3.5');
+
+          await tester.tap(find.text('Pregnant not within targets'));
+          await tester.pumpAndSettle();
+
+          expect(dropdownValue, '6.5');
+        },
+      );
+    },
+  );
 }

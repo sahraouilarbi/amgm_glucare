@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 import '/ressources/ressources.dart';
 import '/screens/main/main_screen.dart';
-import '/screens/widgets/my_button.dart';
+import '/screens/widgets/widgets.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
