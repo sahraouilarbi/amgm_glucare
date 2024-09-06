@@ -4,7 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import '/config/version.dart';
 
 class AProposScreen extends StatelessWidget {
-  const AProposScreen({Key? key}) : super(key: key);
+  const AProposScreen({super.key});
 
   static const String routeName = "/aproposScreen";
 

@@ -88,7 +88,7 @@
   "riskCalculator" : "RISK CALCULATOR",
   "riskLow": "Low risk",
   "riskModerate": "Moderate risk",
-  "riskHigh": "High risk",
+  "riskHight": "High risk",
   "settings": "Settings",
   "start": "Start",
   "version" : "Version",

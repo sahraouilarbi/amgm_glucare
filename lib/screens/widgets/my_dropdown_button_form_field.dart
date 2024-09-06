@@ -7,7 +7,6 @@ class MyDropdownButtonFormField extends StatelessWidget {
     this.value,
     required this.items,
     required this.onChanged,
-    this.onSaved,
     super.key,
   });
   final GlobalKey<FormFieldState> formFieldStateKey;
@@ -15,7 +14,6 @@ class MyDropdownButtonFormField extends StatelessWidget {
   final String? value;
   final List<DropdownMenuItem<String>>? items;
   final void Function(String?)? onChanged;
-  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,6 @@ class MyDropdownButtonFormField extends StatelessWidget {
       items: items,
       isExpanded: true,
       onChanged: onChanged,
-      onSaved: onSaved,
       validator: (String? value) {
         if (value == '') {
           return "can't be empty";

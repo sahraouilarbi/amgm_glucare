@@ -52,11 +52,11 @@ class RiskCalculatorCubit extends Cubit<RiskCalculatorState> {
 
   String _calculateRiskText(double riskScore) {
     if (riskScore <= 3) {
-      return 'lowRisk';
+      return 'riskLow';
     } else if (riskScore >= 3.5 && riskScore <= 6) {
-      return 'moderateRisk';
+      return 'riskModerate';
     } else {
-      return 'hightRisk';
+      return 'riskHight';
     }
   }
 }

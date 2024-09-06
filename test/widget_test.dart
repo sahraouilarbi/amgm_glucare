@@ -47,7 +47,6 @@ void main() {
                         setState(() {});
                         dropdownValue = value;
                       },
-                      onSaved: (value) {},
                     );
                   },
                 ),

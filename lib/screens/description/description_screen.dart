@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class DescriptionScreen extends StatelessWidget {
-  const DescriptionScreen({Key? key}) : super(key: key);
+  const DescriptionScreen({super.key});
 
   static const String routeName = "/descriptionScreen";
 

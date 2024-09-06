@@ -51,15 +51,18 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // AppLocalizations.of(context)!.riskLow
-    // AppLocalizations.of(context)!.riskModerate
-    // AppLocalizations.of(context)!.riskHigh;
-
     return BlocBuilder<RiskCalculatorCubit, RiskCalculatorState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('${state.riskText} : ${state.riskScore}',
+            title: Text(
+                state.riskText == 'riskLow'
+                    ? '${AppLocalizations.of(context)!.riskLow} : ${state.riskScore}'
+                    : state.riskText == 'riskModerate'
+                        ? '${AppLocalizations.of(context)!.riskModerate} : ${state.riskScore}'
+                        : state.riskText == 'riskHight'
+                            ? '${AppLocalizations.of(context)!.riskHight} : ${state.riskScore}'
+                            : 'AMGM Glucare',
                 style: const TextStyle(color: Colors.white)),
             backgroundColor: state.riskColor,
             iconTheme: const IconThemeData(
